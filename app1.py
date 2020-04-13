@@ -44,7 +44,7 @@ def homepage():
         f"/api/v1.0/tobs<br/>"
         f"- Returns a JSON list of Temperature Observations (tobs) for the prior year (2016-08-23 to 2017-08-23). <br/>"
         f"<br/>"
-        f"/api/v1.0/<date>/<br/>"
+        f"/api/v1.0/date<br/>"
         f"- Returns an Average, Max, and Min temperature from the given date to the most recent available date (2017-08-23).<br/>"
         f"<br/>"
         f"/api/v1.0/yyyy-mm-dd/yyyy-mm-dd/<br/>"
@@ -98,34 +98,46 @@ def temp_obs():
 
     return jsonify(tobs_list)
 
-@app.route('/api/v1.0/<date>/')
+
+@app.route('/api/v1.0/<date>')
 def given_date(date):
-#     """Return the average temp, max temp, and min temp for dates after start date"""
-#     results = session.query(Measurement.date, func.avg(Measurement.tobs), func.max(Measurement.tobs), func.min(Measurement.tobs)).\
-#         filter(Measurement.date >= 'date').all()
+    date = f"{date}"
 
-#     session.close()
-#     #return jsonify([results])
-# # Create JSON results
-#     data_list = []
-#     for result in results:
-#         row = {}
-#         row['Start Date'] = date
-#         row['Average Temperature'] = result[1]
-#         row['Highest Temperature'] = result[2]
-#         row['Lowest Temperature'] = result[3]
-#         data_list.append(row)
+    #    """Return the average temp, max temp, and min temp for dates after start date"""
+    results = session.query(Measurement.date, func.avg(Measurement.tobs), func.max(Measurement.tobs), func.min(Measurement.tobs)).\
+    filter(Measurement.date >= dt.date.fromisoformat(date)).all()
 
-    results = session.query(func.avg(Measurement.tobs), func.max(Measurement.tobs), func.min(Measurement.tobs)).\
-        filter(Measurement.date >= date).all()
-    dict = {}
-    result = results[0]
-    dict["Date"] = date
-    dict["Average_Temperature"] = float(result[0])
-    dict["Max_Temperature"] = float(result[1])
-    dict["Min_Temperature"] = float(result[2])
+    # session.close()
+    return jsonify([results])
 
-    return jsonify(dict)
+
+# Create JSON results
+    data_list = []
+    for result in results:
+        row = {}
+        row['Start Date'] = date
+        row['Average Temperature'] = result[0]
+        row['Highest Temperature'] = result[1]
+        row['Lowest Temperature'] = result[2]
+        data_list.append(row)
+
+
+    return jsonify(row)
+
+    # results = session.query(func.avg(Measurement.tobs), func.max(Measurement.tobs), func.min(Measurement.tobs)).\
+    #     filter(Measurement.date >= date).all()
+    # dict = {}
+    # result = results[0]
+    # dict["Date"] = date
+    # dict["Average_Temperature"] = float(result[0])
+    # dict["Max_Temperature"] = float(result[1])
+    # dict["Min_Temperature"] = float(result[2])
+    # session.close()
+    # return jsonify(dict)
+
+
+
+
 
 @app.route('/api/v1.0/<start_date>/<end_date>/')
 def query_dates(start_date, end_date):
