@@ -71,15 +71,7 @@ def stations():
     session.close()
     return jsonify([result])
 
-# Create JSON results
-    # station_data = []
-    # for station in results:
-    #     station_dict = {}
-    #     station_dict["Station"] = station.station
-    #     station_dict["Name"] = station.name
-    #     station_data.append(station_dict)
 
-    # return jsonify(station_data)
 
 @app.route("/api/v1.0/tobs")
 def temp_obs():
@@ -123,18 +115,6 @@ def given_date(date):
 
 
     return jsonify(row)
-
-    # results = session.query(func.avg(Measurement.tobs), func.max(Measurement.tobs), func.min(Measurement.tobs)).\
-    #     filter(Measurement.date >= date).all()
-    # dict = {}
-    # result = results[0]
-    # dict["Date"] = date
-    # dict["Average_Temperature"] = float(result[0])
-    # dict["Max_Temperature"] = float(result[1])
-    # dict["Min_Temperature"] = float(result[2])
-    # session.close()
-    # return jsonify(dict)
-
 
 
 
