@@ -1,8 +1,8 @@
-# SQLAlchemy Homework - Surfs Up!
+# SQLAlchemy - Surfs Up!
 
 ### Before You Begin
 
-1. Create a new repository for this project called `sqlalchemy-challenge`. **Do not add this homework to an existing repository**.
+1. Create a new repository for this project called `sqlalchemy-challenge`. **Do not add this work to an existing repository**.
 
 2. Clone the new repository to your computer.
 
@@ -110,7 +110,7 @@ Now that you have completed your initial analysis, design a Flask API based on t
 
 ## Bonus: Other Recommended Analyses
 
-* The following are optional challenge queries. These are highly recommended to attempt, but not required for the homework.
+* The following are optional challenge queries. These are highly recommended to attempt, but not required for the work.
 
 ### Temperature Analysis I
 
@@ -152,6 +152,3 @@ Now that you have completed your initial analysis, design a Flask API based on t
 
   ![daily-normals](Images/daily-normals.png)
 
-### Copyright
-
-Trilogy Education Services © 2019. All Rights Reserved.
