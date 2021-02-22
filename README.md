@@ -1,5 +1,13 @@
 # SQLAlchemy - Surfs Up!
 
+
+
+
+**Vacation Planning at Hawaii**
+
+**Background**
+Hawaii is known for one of the best places in the world for vacation, thanks to its evergreen islands and extremely comfortable weather. In this repository, Hawaii weather parameters such as precipitation and temperature are analyzed to see if the weather of the pre-picked vacation dates is good or not.
+
 ### Before You Begin
 
 1. Create a new repository for this project called `sqlalchemy-challenge`. **Do not add this work to an existing repository**.
